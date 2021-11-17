@@ -1,0 +1,33 @@
+*,
+*::after *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body {
+    font-family: "Hind Siliguri", sans-serif;
+}
+
+.id:hover {
+    cursor: grab;
+}
+
+.id:hover .text {
+    display: none !important;
+}
+
+.id:hover .icon {
+    display: block !important;
+}
+
+/* ON PRINT */
+@media print {
+    *[data-print="false"] {
+        display: none !important;
+    }
+
+    *[data-print="true"] {
+        display: block !important;
+    }
+}

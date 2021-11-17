@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Envoice - CRUD Operation With JS</title>
+
+        <!-- HTML Meta Tags -->
+        <title>Envoice - CRUD Operation With JS</title>
+        <meta
+            name="description"
+            content="create, update or delete your customer order list and print them. made with love by tonmoy "
+        />
+
+        <!-- Facebook Meta Tags -->
+        <meta property="og:url" content="https://www.byeindonesia.com/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Envoice - CRUD Operation With JS" />
+        <meta
+            property="og:description"
+            content="create, update or delete your customer order list and print them. made with love by tonmoy "
+        />
+        <meta property="og:image" content="./images/Thumb.jpg" />
+
+        <!-- Twitter Meta Tags -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content="byeindonesia.com" />
+        <meta property="twitter:url" content="https://www.byeindonesia.com/" />
+        <meta name="twitter:title" content="Envoice - CRUD Operation With JS" />
+        <meta
+            name="twitter:description"
+            content="create, update or delete your customer order list and print them. made with love by tonmoy "
+        />
+        <meta name="twitter:image" content="./images/Thumb.jpg" />
+
+        <!-- GOOGLE FONTS -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Hind+Siliguri&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- BOOTSTRAP -->
+        <link
+            rel="stylesheet"
+            href="./node_modules/bootstrap/dist/css/bootstrap.min.css"
+        />
+        <!-- BOOTSTRAP ICONS -->
+        <link
+            rel="stylesheet"
+            href="./node_modules/bootstrap-icons/font/bootstrap-icons.css"
+        />
+        <!-- [CUSTOM CSS] -->
+        <link rel="stylesheet" href="./style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="col-12 col-8 mx-auto py-5">
+                <!-- [CREATE FORM START] -->
+                <header data-print="false">
+                    <form
+                        class="form-group row gy-2 gx-2"
+                        id="createForm"
+                        data-type="CREATE"
+                    >
+                        <div class="col-12 col-lg-4">
+                            <div class="input-group">
+                                <span
+                                    class="
+                                        bi bi-cart
+                                        input-group-text
+                                        bg-primary
+                                        text-light
+                                        border border-primary
+                                    "
+                                ></span>
+                                <input
+                                    type="text"
+                                    placeholder="product name"
+                                    name="name"
+                                    class="
+                                        form-control
+                                        border border-primary
+                                        shadow-none
+                                    "
+                                />
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <div class="input-group">
+                                <span
+                                    class="
+                                        bi bi-currency-dollar
+                                        input-group-text
+                                        border border-danger
+                                        bg-danger
+                                        text-light
+                                    "
+                                ></span>
+                                <input
+                                    type="number"
+                                    placeholder="price"
+                                    name="price"
+                                    class="
+                                        form-control
+                                        border border-danger
+                                        shadow-none
+                                    "
+                                />
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <div class="input-group">
+                                <span
+                                    class="
+                                        bi bi-123
+                                        input-group-text
+                                        border border-warning
+                                        bg-warning
+                                        text-dark
+                                    "
+                                ></span>
+                                <input
+                                    type="number"
+                                    placeholder="quantity"
+                                    name="quantity"
+                                    class="
+                                        form-control
+                                        border border-warning
+                                        shadow-none
+                                    "
+                                />
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-2 d-flex gap-1">
+                            <button
+                                class="btn btn-warning d-none w-100"
+                                id="updateFormBtn"
+                            >
+                                Edit <span class="bi bi-gear"></span>
+                            </button>
+                            <button
+                                class="btn btn-success w-100"
+                                id="createFormBtn"
+                            >
+                                Add New <span class="bi bi-plus"></span>
+                            </button>
+                            <button
+                                class="btn btn-success d-none"
+                                id="cancelEditBtn"
+                                type="reset"
+                            >
+                                <span class="bi bi-x-lg"></span>
+                            </button>
+                        </div>
+                    </form>
+                </header>
+                <!-- [CREATE FORM END] -->
+
+                <section
+                    class="mt-5 d-flex justify-content-between gap-1"
+                    data-print="false"
+                >
+                    <!-- [SORT LIST] -->
+                    <div class="col-3">
+                        <select
+                            class="form-select shadow-none"
+                            aria-label="Default select example"
+                            id="sort"
+                        >
+                            <option selected value="default">
+                                Sort By Default
+                            </option>
+                            <option value="PRICEHIGHTOLOW">
+                                Price High To Low
+                            </option>
+                            <option value="PRICELOWTOHIGH">
+                                Price Low To High
+                            </option>
+                            <option value="QUANTITYHIGHTOLOW">
+                                Quantity High To Low
+                            </option>
+                            <option value="QUANTITYLOWTOHIGH">
+                                Quantity Low To High
+                            </option>
+                            <option value="TOTALPRICEHIGHTOLOW">
+                                Total Price High To Low
+                            </option>
+                            <option value="TOTALPRICELOWTOHIGH">
+                                Total Price Low To High
+                            </option>
+                            <option value="NAMEASCENDING">
+                                Name Ascending
+                            </option>
+                            <option value="NAMEDESENDING">
+                                Name Descending
+                            </option>
+                        </select>
+                    </div>
+                    <!-- [SORT LIST] -->
+
+                    <!-- [SEARCH BAR START] -->
+                    <div class="col-9 col-md-5">
+                        <div class="input-group">
+                            <input
+                                type="text"
+                                placeholder="search"
+                                name="search"
+                                id="searchBox"
+                                class="
+                                    form-control
+                                    border border-dark
+                                    shadow-none
+                                "
+                            />
+                            <button
+                                class="btn btn-dark shadow-none"
+                                id="searchBtn"
+                            >
+                                <span class="bi bi-search"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- [SEARCH BAR END] -->
+                </section>
+
+                <main class="card mt-3 shadow-sm">
+                    <!-- [TABLE START] -->
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col" colspan="2">Name</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Quantity</th>
+                                        <th scope="col">Total</th>
+                                        <th
+                                            scope="col"
+                                            class="text-end"
+                                            data-print="false"
+                                        >
+                                            Actions
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tableBody"></tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th colspan="5" class="text-center">
+                                            Total Cost
+                                        </th>
+
+                                        <th id="cost">500</th>
+                                        <td data-print="false"></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- [TABLE END] -->
+
+                    <div class="card-footer text-end" data-print="false">
+                        <button
+                            class="btn btn-primary shadow-none"
+                            onclick="window.print()"
+                        >
+                            <span class="bi bi-printer"></span> Print
+                        </button>
+                        <button
+                            class="btn btn-success"
+                            onclick="exportToJsonFile()"
+                        >
+                            <span class="bi bi-braces"></span>
+                            Export To JSON
+                        </button>
+                    </div>
+                </main>
+
+                <!-- [CREDIT START] -->
+                <footer class="text-center" style="margin-top: 200px">
+                    <h1 class="h6">Envoice - CRUD Operation With JS</h1>
+                    <p class="small text-muted">
+                        made with love by
+                        <a
+                            href="https://github.com/tonmoydeb404"
+                            target="_blank"
+                            class="link text-danger"
+                            >tonmoydeb</a
+                        >
+                    </p>
+                </footer>
+                <!-- [CREDIT END] -->
+            </div>
+        </div>
+
+        <!-- {NOTIFICATION START} -->
+        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+            <div
+                class="toast align-items-center text-white border-0"
+                role="alert"
+                aria-live="assertive"
+                aria-atomic="true"
+                id="notification"
+            >
+                <div class="d-flex">
+                    <div class="toast-body" id="notificationBody">
+                        Hello, world! This is a toast message.
+                    </div>
+                    <button
+                        type="button"
+                        class="btn-close btn-close-white me-2 m-auto"
+                        data-bs-dismiss="toast"
+                        aria-label="Close"
+                        id="notificationCloseBtn"
+                    ></button>
+                </div>
+            </div>
+        </div>
+        <!-- {NOTIFICATION START} -->
+
+        <!-- [SCRIPT] -->
+        <script src="./app.js"></script>
+    </body>
+</html>
