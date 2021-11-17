@@ -22,6 +22,6 @@ this is vanilla JS project which one used in shop to list customer orders. I've 
 
 #
 
-live preview : [https://td-envoice.netlify.app](https://td-invoice.netlify.app)
+live preview : [https://td-invoice.netlify.app](https://td-invoice.netlify.app)
 
 Contact Me : [Email](mailto:tonmoydeb404@gmail.com) | [LinkedIn](https://linkedin.com/in/tonmoydeb) | [Facebook](https://facebook.com/tonmoydeb) | [Tonmoy Deb](https://tonmoydeb.blogspot.com)
