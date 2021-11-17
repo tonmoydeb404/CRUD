@@ -4,7 +4,7 @@ CRUD operation is everywhere. so i've decided that i will create CRUD operation 
 
 #
 
-## Envoice - CRUD Operation With JS
+## Invoice - CRUD Operation With JS
 
 this is vanilla JS project which one used in shop to list customer orders. I've used localstorage as a database. so now things you can do :
 
